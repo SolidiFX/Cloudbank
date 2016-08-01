@@ -6,6 +6,9 @@ Access your bank accounts with a simple bank agnostic API.
 
 You need to have an API key. Contact your Solidi representative for access.
 
-### 
+### Authentication
+
+To call all API method you need to sign your calls. See the seperate documentation on [**HTTP Authentication**](HTTPAuthentication.md "**HTTP Authentication**")
+
 
 ### Private Methods

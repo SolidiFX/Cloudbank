@@ -8,6 +8,15 @@ Access your bank accounts with a simple bank agnostic API.
 
 The Cloudbank Rest API is designed as a completely Restful API making use of HTTP methods GET, POST, PUT, DELETE.
 
+# Beta Warning
+
+This API is in Beta and may change with little notice. Currently known defects which will definitely change are listed below.
+
+## User Support
+
+Currently there is no concept of a 'user' other than the API client who has access to the API. It is planned to add user support so that bank logins can be added to a specific user.
+
+
 # Methods
 
 There are two sets of methods:
@@ -68,7 +77,7 @@ None
 GET https://t1.solidi.co/api/v1/loginRequirements/@bankid
 
 
-Gets a list of all the supported banks.
+Gets the login details which must be gathered from a user in order to be able to login to the banking service.
 
 #### URL Params
  - @bankid- ID of the bank (dict key from GET banks call)
@@ -110,3 +119,107 @@ None
         ]
 
 
+### bankLogin
+
+POST https://t1.solidi.co/api/v1/loginRequirements/@bankid
+
+
+Adds a new bank login to your account. This will test logging into the bank account.
+
+#### URL Params
+ - @bankid- ID of the bank (dict key from GET banks call)
+
+#### HTTP POST Params
+ - @loginDetails - JSON dictionary of the answers to the questions returned by loginRequirements.
+ - e.g. For rbsdigital.co.uk
+
+        {
+          "q1":{"answer": "01234567"},
+          "q2":{"answer": "1234"},
+          "q3":{"answer": "mypassword"},
+        }
+
+
+#### Return
+ - JSON dictionary with result of operation
+   - @result - Either:
+     - "Login Added" (Success)
+     - an error message
+
+
+### account
+
+GET https://t1.solidi.co/api/v1/account
+
+
+Gets a list of all the bank accounts that have been found.
+WARNING - Currently this works at the level of the API client. This will be updated shortly to work at the user level.
+
+#### URL Params
+None
+
+#### HTTP POST Params
+None
+
+
+#### Return
+ - JSON list of bank accounts
+   - @id - Unique ID of the account
+   - @sortcode - 6 digit UK bank sortcode
+   - @accno - 8 digit account number
+   - @description - Description of the account as supplied by the bank
+ -  E.g.
+ 
+        [
+          {
+            "accno":"01234567",
+            "description":"MR JOE BLOGGS",
+            "id":1014,
+            "sortcode":"010203"
+          },
+          {
+            "accno":"76543210",
+            "description":"MR & MRS BLOGGS",
+            "id":2011,
+            "sortcode":"010203"
+          }
+        ]
+
+### transactions
+
+GET https://t1.solidi.co/api/v1/transactions/@accountid
+
+
+Gets a list of all the transactions in the account.
+
+WARNING - Currently this works at the level of the API client. This will be updated shortly to work at the user level.
+
+#### URL Params
+ - @accountid- ID of the bank account as returned in the call to GET account
+
+#### HTTP POST Params
+None
+
+
+#### Return
+ - JSON list of bank accounts
+   - @id - Unique ID of the account
+   - @sortcode - 6 digit UK bank sortcode
+   - @accno - 8 digit account number
+   - @description - Description of the account as supplied by the bank
+ -  E.g.
+ 
+        [
+          {
+            "accno":"01234567",
+            "description":"MR JOE BLOGGS",
+            "id":1014,
+            "sortcode":"010203"
+          },
+          {
+            "accno":"76543210",
+            "description":"MR & MRS BLOGGS",
+            "id":2011,
+            "sortcode":"010203"
+          }
+        ]

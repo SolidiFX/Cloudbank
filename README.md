@@ -8,6 +8,10 @@ Access your bank accounts with a simple bank agnostic API.
 
 The Cloudbank Rest API is designed as a completely Restful API making use of HTTP methods GET, POST, PUT, DELETE.
 
+# Prerequisites
+
+You need to have an API key. Contact your Solidi representative for access.
+
 # Beta Warning
 
 This API is in Beta and may change with little notice. Currently known defects which will definitely change are listed below.
@@ -16,6 +20,10 @@ This API is in Beta and may change with little notice. Currently known defects w
 
 Currently there is no concept of a 'user' other than the API client who has access to the API. It is planned to add user support so that bank logins can be added to a specific user.
 
+
+# Signing Private method calls
+
+To call private API methods you need to sign your calls. See the separate documentation on [**HTTP Authentication**](HTTPAuthentication.md "**HTTP Authentication**")
 
 # Methods
 
@@ -26,16 +34,6 @@ There are two sets of methods:
   - Private
     - These provide access to private information including users transactions. They need to be correctly signed. 
 
-
-# Prerequisites
-
-You need to have an API key. Contact your Solidi representative for access.
-
-# Signing Private method calls
-
-To call private API methods you need to sign your calls. See the separate documentation on [**HTTP Authentication**](HTTPAuthentication.md "**HTTP Authentication**")
-
-# Methods
 
 ## Public Methods
 

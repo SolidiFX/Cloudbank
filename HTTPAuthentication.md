@@ -1,6 +1,6 @@
 # HTTP API Authentication
 
-Both the Solidi Restful API and the Legacy Bitstamp API require private methods to be signed using the API Secret available on the Settings page.
+The Cloudbank Restful API requires private methods to be signed using the API Secret supplied by your Solidi representative.
 
 When calling the API you should use the following HTTP headers:
 
@@ -30,3 +30,7 @@ You can generate a signature to use as the API-Sign HTTP header using the follow
 	b64secret = base64.b64encode(api_secret)
 	sig = hmac.new(b64secret, message, hashlib.sha256)
 
+
+### Disabling HTTP Authentication
+
+As part of a short development phase in your project - for example to aid with meeting a demo deadline, Solidi may turn off the requirement to sign your API calls. This is done on a case by case basis and will have significant restrictions placed on the number of users who can use the API.

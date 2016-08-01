@@ -33,4 +33,6 @@ You can generate a signature to use as the API-Sign HTTP header using the follow
 
 ### Disabling HTTP Authentication
 
-As part of a short development phase in your project - for example to aid with meeting a demo deadline, Solidi may turn off the requirement to sign your API calls. This is done on a case by case basis and will have significant restrictions placed on the number of users who can use the API.
+As part of a short development phase in your project - for example to aid with meeting a demo deadline - Solidi may turn off the requirement to sign your API calls.
+
+This is done on a case by case basis and will have restrictions placed on the number of users who can use the API.

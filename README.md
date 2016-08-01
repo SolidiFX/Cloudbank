@@ -47,18 +47,15 @@ None
 
 
 ##### Return #####
- - JSON dictionary of banks
-   - @amount - Amount in units of base currency.
-   - @datetime - Order timestamp in milliseconds since unix epoch.
-   - @id - Unique order identifier
-   - @multiplier - Multiplier vs the base price. 
-   - @type - 0 (buy) / 1 (sell)
-   - @price - Price per unit of base currency
- - 
+ - JSON dictionary of supported banks, keyed on the url of the banl.
+   - @name - Full name of the bank.
+   - @logo - Logo of the bank which you can use in your application.
+ -  E.g.
+ 
         {
-    "rbsdigital.co.uk":{
-        "logourl":"https://t1.solidi.co/img/logos/rbs.jpg",
-        "name":"Royal Bank Of Scotland"
-    }
-}
+          "rbsdigital.co.uk":{
+            "logourl":"https://t1.solidi.co/img/logos/rbs.jpg",
+            "name":"Royal Bank Of Scotland"
+          }
+        }
 

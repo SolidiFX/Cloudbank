@@ -2,8 +2,6 @@
 
 Access your bank accounts with a simple bank agnostic API.
 
-[TOC]
-
 # Introduction
 
 The Cloudbank Rest API is designed as a completely Restful API making use of HTTP methods GET, POST, PUT, DELETE.

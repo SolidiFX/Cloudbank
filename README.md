@@ -14,10 +14,6 @@ You need to have an API key. Contact your Solidi representative for access.
 
 This API is in Beta and may change with little notice. Currently known defects which will definitely change are listed below.
 
-## User Support
-
-Currently there is no concept of a 'user' other than the API client who has access to the API. It is planned to add user support so that bank logins can be added to a specific user.
-
 
 # Signing Private method calls
 
@@ -38,6 +34,14 @@ There are two sets of methods:
 Currently all methods are private. This may change in future.
 
 ## Private Methods
+
+
+Module | Description
+----|---
+[User](UserMethods) | Responsible for adding a clients "Users" to the platform. You should create a "User" object for each real world user.
+[Bank](BankMethods) | Manages bank accounts including listing, displaying, getting transactions etc
+
+
 
 ### banks - Get a list of the supported Banks
 

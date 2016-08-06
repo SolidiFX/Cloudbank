@@ -42,6 +42,7 @@ Module | Description
 [Bank](BankMethods) | Manages bank accounts including listing, displaying, getting transactions etc
 
 
+ 
 
 ### banks - Get a list of the supported Banks
 

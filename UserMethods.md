@@ -1,5 +1,7 @@
 ## User Methods
 
+[TOC]
+
 ### POST user - Create a new user
 
 POST https://t1.solidi.co/api/v1/user
@@ -60,101 +62,79 @@ None
         ]
 
 
-### bankLogin
+### GET user/@userid - Get user
 
-POST https://t1.solidi.co/api/v1/loginRequirements/@bankid
-
-
-Adds a new bank login to your account. This will test logging into the bank account.
-
-#### URL Params
- - @bankid- ID of the bank (dict key from GET banks call)
-
-#### HTTP POST Params
- - @loginDetails - JSON dictionary of the answers to the questions returned by loginRequirements.
- - e.g. For rbsdigital.co.uk
-
-        {
-          "q1":{"answer": "01234567"},
-          "q2":{"answer": "1234"},
-          "q3":{"answer": "mypassword"},
-        }
+GET https://t1.solidi.co/api/v1/user/@userid
 
 
-#### Return
- - JSON dictionary with result of operation
-   - @result - Either:
-     - "Login Added" (Success)
-     - an error message
-
-
-### account
-
-GET https://t1.solidi.co/api/v1/account
-
-
-Gets a list of all the bank accounts that have been found.
-WARNING - Currently this works at the level of the API client. This will be updated shortly to work at the user level.
+Get a specific user account.
 
 #### URL Params
-None
+ - @userid - ID of the user to get.
 
 #### HTTP POST Params
 None
 
-
 #### Return
- - JSON list of bank accounts
-   - @id - Unique ID of the account
-   - @sortcode - 6 digit UK bank sortcode
-   - @accno - 8 digit account number
-   - @description - Description of the account as supplied by the bank
- -  E.g.
- 
-        [
-          {
-            "accno":"01234567",
-            "description":"MR JOE BLOGGS",
-            "id":1014,
-            "sortcode":"010203"
-          },
-          {
-            "accno":"76543210",
-            "description":"MR & MRS BLOGGS",
-            "id":2011,
-            "sortcode":"010203"
-          }
-        ]
-
-### transactions
-
-GET https://t1.solidi.co/api/v1/transactions/@accountid
-
-
-Gets a list of all the transactions in the account.
-
-#### URL Params
- - @accountid- ID of the bank account as returned in the call to GET account
-
-#### HTTP POST Params
-None
-
-
-#### Return
- - JSON list of bank accounts
-   - @amt- Amount of the txn in GBP
-   - @date- Date of the transaction
-   - @desc1- Description field 1
-   - @desc2- Description field 2
-   - @id - Unique ID of the transaction
+ - JSON list of the user objects (only 1)
+   - @id - Unique ID of the user. 
+   - @username - Client chosen username.
+   - @firstname - Firstname of user
+   - @lastname - Lastname of user
  -  E.g.
  
         [
             {
-                "amt":5.5,
-                "date":"2016-07-30T23:00:00.000Z",
-                "desc1":"CJT2L7L",
-                "desc2":"",
-                "id":9878
+                "firstname":"Jamie",
+                "id":30001,
+                "lastname":"McNaught",
+                "username":"test41"
             }
         ]
+
+
+### DELTE user/@userid - Delete user
+
+DELETE https://t1.solidi.co/api/v1/user/@userid
+
+
+Delete a specific user account.
+
+#### URL Params
+ - @userid - ID of the user to delete.
+
+#### HTTP POST Params
+None
+
+#### Return
+ - JSON dictionary containing result
+   - @result - Test description of result. 
+ -  E.g.
+ 
+        {
+            "result":"User deleted"
+        }
+
+### PUT user/@userid - Update a user
+
+PUT https://t1.solidi.co/api/v1/user/@userid
+
+
+Update an existing user account.
+
+#### URL Params
+ - @userid - ID of the user to update.
+
+#### HTTP POST Params
+ - @username - Client chosen username. This must be unique - it could be a database key from your client system.
+ - @firstname - Firstname of user
+ - @lastname - Lastname of user
+
+#### Return
+ - JSON dictionary containing result
+   - @result - Test description of result. 
+ -  E.g.
+ 
+        {
+            "result":"User updated"
+        }

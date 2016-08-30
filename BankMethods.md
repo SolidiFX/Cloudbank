@@ -81,7 +81,7 @@ None
 
 ### bankLogin
 
-POST https://t1.solidi.co/api/v1/loginRequirements/@bankid
+POST https://t1.solidi.co/api/v1/bankLogin/@bankid
 
 
 Adds a new bank login to your account. This will test logging into the bank account.
@@ -109,14 +109,14 @@ Adds a new bank login to your account. This will test logging into the bank acco
 
 ### account
 
-GET https://t1.solidi.co/api/v1/account
+GET https://t1.solidi.co/api/v1/account/@userid
 
 
-Gets a list of all the bank accounts that have been found.
-WARNING - Currently this works at the level of the API client. This will be updated shortly to work at the user level.
+Gets a list of all the bank accounts that have been found for the specified user.
 
 #### URL Params
-None
+ - @bankid- ID of the user (dict key from GET users call)
+
 
 #### HTTP POST Params
 None

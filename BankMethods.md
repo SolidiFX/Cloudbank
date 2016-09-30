@@ -22,7 +22,7 @@ None
    - @name - Full name of the bank.
    - @logo - Logo of the bank which you can use in your application.
  -  E.g.
- 
+
         {
           "rbsdigital.co.uk":{
             "logourl":"https://t1.solidi.co/img/logos/rbs.jpg",
@@ -57,7 +57,7 @@ None
      - password - Password field which must be obscured by platforms default placeholder characters (e.g. asterisks)
      - pin - Numeric field containing only characters 0-9
  -  E.g.
- 
+
         [
           {
             "q1":{
@@ -107,6 +107,57 @@ Adds a new bank login to your account. This will test logging into the bank acco
      - an error message
 
 
+
+### :new: GET bankLogin/@subuserID
+
+GET https://t1.solidi.co/api/v1/bankLogin/@subuserID
+
+Gets a list of all the bank logins for a specific subuserID.
+
+#### URL Params
+- @subuserID- ID of the subuser to get the list of logins from
+
+#### HTTP POST Params
+None
+
+#### Return
+  - JSON list of the user objects
+    - @id - Unique ID of the login.
+    - @bankid - Unique ID of the bank.
+  -  E.g.
+
+        [
+            {
+                "bankid":"rbsdigital.co.uk",
+                "id":40001
+            }
+        ]
+
+
+
+### :new: DELETE bankLogin/@subuserID/@loginID
+
+DELETE https://t1.solidi.co/api/v1/bankLogin/@subuserID/@loginID
+
+Delete an existing bank login from your account.
+
+#### URL Params
+  - @subuserID- ID of the subuser to delete the login from
+  - @loginID- ID of the login
+
+#### HTTP POST Params
+None
+
+#### Return
+  - JSON dictionary with result of operation
+    - @result - Either:
+      - "Bank Login deleted" (Success)
+      - an error message
+
+
+
+
+
 ### account
 
 GET https://t1.solidi.co/api/v1/account/@userid
@@ -129,7 +180,7 @@ None
    - @accno - 8 digit account number
    - @description - Description of the account as supplied by the bank
  -  E.g.
- 
+
         [
           {
             "accno":"01234567",
@@ -167,7 +218,7 @@ None
    - @desc2- Description field 2
    - @id - Unique ID of the transaction
  -  E.g.
- 
+
         [
             {
                 "amt":5.5,
